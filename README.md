@@ -1,5 +1,11 @@
 # 📸 Remind — Application de Souvenirs Locaux & Partage P2P
 
+> ⚠️ **Note sur le projet & Migration à venir :**  
+> Ce projet n'a pas été conçu entièrement de zéro par mes soins, mais réalisé et développé avec l'assistance des IA **Gemini** et **ChatGPT**.  
+> Le projet sera entièrement transféré vers mon site personnel (**[dylanas.fr](https://dylanas.fr)**) d'ici **novembre 2026**.
+
+---
+
 **Remind** est une application Android moderne, 100 % locale et respectueuse de la vie privée, conçue pour capturer des moments du quotidien (format double photo / Dual-Camera) et les échanger automatiquement en réseau local (P2P Wi-Fi) avec les personnes situées à proximité.
 
 ---
@@ -66,61 +72,16 @@
 com.odilonhg.remind
 ├── data
 │   ├── local
-│   │   ├── db           # Database Room (PhotoEntity, PhotoDao, AppDatabase)
-│   │   ├── preferences  # UserPreferencesRepository (DataStore)
-│   │   └── storage      # Gestionnaire d'images physiques sur le stockage local
-│   ├── location         # Geolocation helper (GPS / Coarse location)
-│   ├── p2p              # Moteur P2P (NSD Discovery, Ktor Server & Client)
-│   └── update           # Manager de mises à jour GitHub (GitHub Releases API)
-├── service              # Service d'arrière-plan P2P (Foreground Service)
+│   │   ├── db            # Database Room (PhotoEntity, PhotoDao, AppDatabase)
+│   │   ├── preferences   # UserPreferencesRepository (DataStore)
+│   │   └── storage       # Gestionnaire d'images physiques sur le stockage local
+│   ├── location          # Geolocation helper (GPS / Coarse location)
+│   ├── p2p               # Moteur P2P (NSD Discovery, Ktor Server & Client)
+│   └── update            # Manager de mises à jour GitHub (GitHub Releases API)
+├── service               # Service d'arrière-plan P2P (Foreground Service)
 ├── ui
-│   ├── navigation       # NavGraph & MainContainer avec animations
-│   ├── screens          # Écrans Compose (Home, Galerie, Carte, Profil, Appairage)
-│   └── theme            # Material3 Theme & Typography
-├── widget               # Receveurs & layouts des Widgets Glance
-└── worker               # DailyReminderWorker (Rappels quotidiens)
-```
-
----
-
-## 🚀 Installation & Compilation
-
-### Prérequis
-- Android Studio Ladybug (2024.2.1) ou plus récent
-- JDK 17
-- Android SDK 35 (minSdk 26 — Android 8.0+)
-
-### Cloner et Compiler le projet
-```bash
-# Cloner le dépôt
-git clone https://github.com/odilonhg/Remind.git
-cd Remind
-
-# Compiler l'application (APK Debug)
-./gradlew assembleDebug
-```
-
----
-
-## 🔄 Système de Mise à jour Automatique In-App
-
-Remind intègre son propre système d'auto-update basé sur les **Releases GitHub** :
-1. Au lancement (ou manuellement depuis la page **Profil**), l'application interroge l'API GitHub (`/releases/latest`).
-2. Si une version plus récente est disponible (comparaison de semver `vX.Y`), l'application télécharge l'APK officiel depuis GitHub.
-3. L'installation est déclenchée directement in-app via `FileProvider`.
-
----
-
-## 🔒 Sécurité & Vie Privée
-
-- **100 % Décentralisé** : Les photos ne transitent sur aucun serveur central.
-- **Réseau Local Uniquement** : L'échange P2P se fait exclusivement entre appareils connectés au même réseau Wi-Fi local.
-- **Transparence** : Aucune donnée personnelle ou télémétrique n'est collectée.
-
----
-
-## 📜 Licence
-
-Ce projet est sous licence MIT. Libre d'utilisation, de modification et de distribution.
-
-Créé avec ❤️ par **odilonhg**.
+│   ├── navigation        # NavGraph & MainContainer avec animations
+│   ├── screens           # Écrans Compose (Home, Galerie, Carte, Profil, Appairage)
+│   └── theme             # Material3 Theme & Typography
+├── widget                # Receveurs & layouts des Widgets Glance
+└── worker                # DailyReminderWorker (Rappels quotidiens)
